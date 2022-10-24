@@ -1,7 +1,12 @@
-@include('header')
+@include('parts/header')
 
+    <h1>Hello, world!</h1>
+        <ul>
+            @foreach ($schools as $school)
+                <li>
+                    {{$school->$record->$fields->$nom_etablissement}}
+                </li>
+            @endforeach
+        </ul>
 
-    <h1>Hello, new world!</h1>
-
-
-  @include('footer')
+@include('parts/footer')
