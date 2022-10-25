@@ -16,3 +16,7 @@
 use App\Http\Controllers\schoolListController;
 
 $router->get('/liste', 'schoolListController@renderView');
+$router->get('/', function(){
+    return view('accueil');
+});
+
