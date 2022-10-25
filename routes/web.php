@@ -13,6 +13,6 @@
 |
 */
 
-$router->get('/', function() use ($router) {
-    return view('accueil');
-});
+use App\Http\Controllers\schoolListController;
+
+$router->get('/liste', 'schoolListController@renderView');
