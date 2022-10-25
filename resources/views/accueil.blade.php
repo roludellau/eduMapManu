@@ -1,7 +1,7 @@
 @include('parts.header')
 
 <div class="bandeauHaut">
-    <h1>
+    <h1 class="titreAccueil">
         L'éducation à Versailles
     </h1>
 </div>
