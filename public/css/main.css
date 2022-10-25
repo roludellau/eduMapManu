@@ -1,3 +1,6 @@
+.allButFooter{
+min-height: calc(100vh - 30px);
+}
 
 .titreAccueil{
     color: rgba(255, 255, 255, 0.95);

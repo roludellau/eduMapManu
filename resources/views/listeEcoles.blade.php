@@ -1,6 +1,6 @@
 @include('parts.header')
 
-    <h1 class="titre">Liste des ecoles de Versailles</h1>
+    <h1 class="titre">Liste des écoles de Versailles</h1>
         <div class="containerFlex">
             @foreach ($schools as $school)
                 <div class="cardEcole">
