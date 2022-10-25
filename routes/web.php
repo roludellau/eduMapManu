@@ -15,9 +15,18 @@
 
 use App\Http\Controllers\schoolListController;
 
-$router->get('/liste', 'schoolListController@renderView');
 $router->get('/', function(){
     return view('accueil');
+});
+
+$router->get('/liste', 'schoolListController@renderView');
+
+$router->get('/inscription', function(){
+    return view('inscription');
+});
+
+$router->get('/connexion', function(){
+    return view('connexion');
 });
 
 
