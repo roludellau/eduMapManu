@@ -20,3 +20,24 @@ $router->get('/', function(){
     return view('accueil');
 });
 
+
+
+
+
+/*
+$router->get('/test', function (){
+    $typeArray = [];
+    $this->client = new Client(['base_uri' => 'https://data.education.gouv.fr']);
+    $response = $this->client->request('GET', '/api/v2/catalog/datasets/fr-en-annuaire-education/records?limit=100&where=code_postal="78000"');
+    $schoolData = json_decode($response->getBody()->getContents())->records;
+    foreach ($schoolData as $school){
+        $typeOfSchool = $school->record->fields->type_etablissement;
+        if (!array_key_exists($typeOfSchool, $typeArray)){
+            $typeArray[$typeOfSchool] = 1;
+        } else {
+            $typeArray[$typeOfSchool] += 1;
+        }
+    }
+    return dd($typeArray);
+});
+*/

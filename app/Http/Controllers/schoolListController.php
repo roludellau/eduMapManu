@@ -10,7 +10,7 @@ class schoolListController extends Controller
     public string $apiBaseUrl = 'https://data.education.gouv.fr';
     public string $apiRoute = '/api/v2/catalog/datasets/fr-en-annuaire-education/records';
     public string $departmentNumber = '78000';
-    public string $apiQueryParams = '?limit=100&where=code_postal="78000" AND type_etablissement = "Ecole"';
+    public string $apiQueryParams = '?limit=100&where=code_postal="78000" AND type_etablissement != "Service Administratif"';
     private array $schoolData;
 
 
