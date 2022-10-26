@@ -14,6 +14,7 @@
 */
 
 use App\Http\Controllers\schoolListController;
+use App\Models\Utilisateur;
 
 $router->get('/', function(){
     return view('accueil');
@@ -27,6 +28,11 @@ $router->get('/inscription', function(){
 
 $router->get('/connexion', function(){
     return view('connexion');
+});
+
+$router->get('/testModel',function($id){
+    // $utilisateurs = Utilisateur::find($id);
+    // var_dump ($utilisateurs);
 });
 
 
