@@ -30,7 +30,7 @@ $router->get('/connexion', function(){
     return view('connexion');
 });
 
-$router->get('/testModel',function($id){
+$router->get('/testModel',function(){
     // $utilisateurs = Utilisateur::find($id);
     // var_dump ($utilisateurs);
 });
