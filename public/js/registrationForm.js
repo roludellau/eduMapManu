@@ -43,19 +43,26 @@ window.addEventListener('click', (e) => {
 
         if (errorList['errorEmail'] && !mailMessage){
             mailDiv.insertAdjacentHTML('afterend', '<p id="mailMessage" class="text-danger">' + errorList['errorEmail'] + '</p>')
+        } else if (!errorList['errorEmail']){
+            mailMessage && mailMessage.remove()
         }
         if (errorList['errorPassword'] && !passwordMessage){
             passwordDiv.insertAdjacentHTML('afterend', '<p id="passwordMessage" class="text-danger">' + errorList['errorPassword'] + '</p>')
+        } else if (!errorList['errorPassword']){
+            passwordMessage && passwordMessage.remove()
         }
+
         if (errorList['passwordMatch'] && !passwordMessage2){
             passwordDiv2.insertAdjacentHTML('afterend', '<p id="passwordMessage2" class="text-danger">' + errorList['passwordMatch'] + '</p>')
+        } else if (!errorList['errorPasswordMatch']){
+            passwordMessage2 && passwordMessage2.remove()
         }
     }
 
     if (errorList.length == 0 && email.value && password.value && password2.value){
-        submitButton.removeAttribute('disabled');
+        submitButton.removeAttribute('disabled', '');
     } else {
-        submitButton.setAttribute('disabled');
+        submitButton.setAttribute('disabled', '');
     }
 })
 
