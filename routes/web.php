@@ -34,26 +34,19 @@ $router->get('/inscription', function(){
     ]);
 });
 
+
+//Validation inscription
+$router->post('/inscription', 'userController@validateRegistration');
+
+
 //Page connexion
 $router->get('/connexion', function(){
     return view('connexion');
 });
 
-$router->get('/testModel',function(){
-    // $utilisateurs = Utilisateur::find($id);
-    // var_dump ($utilisateurs);
+$router->post('/connexion','userController@connexion');
 
-    // $user = new User;
-    // $user->email = "test@test.fr";
-    // $user->password = "passtest";
-    // $user->save();
 
-    $test = User::whereEmail('test@tesdfsdfdst.fr')->first();
-    var_dump($test);
-});
-
-//Validation inscription
-$router->post('/inscription', 'userController@validateRegistration');
 
 
 
