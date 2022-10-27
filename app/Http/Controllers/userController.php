@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -22,9 +23,7 @@ class userController extends Controller
      */
     public function __construct(Request $request)
     {
-        $this->email = $request->input('email');
-        $this->password = $request->input('password');
-        $this->password2 = $request->input('password2');
+
     }
 
     /**
@@ -33,17 +32,21 @@ class userController extends Controller
      * @return View
      */
     public function validateRegistration():View{
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $password2 = $request->input('password2');
+
 
         $errorList = [];
         $success =false;
         $fail = false;
-        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
             $errorList['email'] = 'L\'adresse mail entrée n\'est pas valide.';
         }
-        if (!preg_match($this->regexPassword, $this->password)){
+        if (!preg_match($this->regexPassword, $password)){
             $errorList['password'] = 'Le mot de passe doit au moins contenir: 8 caractères, une majuscule, et un caractère spécial.';
         }
-        if (!$this->password === $this->password2){
+        if (!$this->password === $password2){
             $errorList['passwordMatch'] = 'Les deux mots de passe de correspondent pas.';
         }
 
@@ -51,7 +54,7 @@ class userController extends Controller
             if(!(User::whereEmail($this->email)->first())){
                 $user = new User();
                 $user->email = $this->email;
-                $user->password = $this->password;
+                $user->password = app('hash')->make($this->password);
                 $success = $user->save();
             }else{
                 $fail = true;
@@ -66,6 +69,20 @@ class userController extends Controller
             'fail' => $fail
         ]);
 
+    }
+
+    public function connexion(Request $request){
+        var_dump('rentre dans connexion');
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        if($user = User::whereEmail($email)->first()){
+            // var_dump($user->password);
+            // var_dump($hashedpass);
+            if(Hash::check($password, $user->password)){
+                var_dump('connexion reussie');
+            }
+        }
     }
 
 }
