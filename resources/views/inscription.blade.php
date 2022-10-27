@@ -8,24 +8,26 @@
         </h2>
     </div>
 
-    <form class="form">
-        <div class="form-group my-2">
-          <label for="exampleInputEmail1">Adresse Mail</label>
-          <input type="email" class="form-control mt-2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez votre adresse mail">
+    <form class="form" method="POST">
+        <div class="form-group my-2" id="mailDiv">
+          <label for="email">Adresse Mail</label>
+          <input type="email" class="form-control mt-2 inputToCheck" id="email" name="email" aria-describedby="emailHelp" placeholder="Entrez votre adresse mail" value={{$defaultEmail}}>
+
         </div>
-        <div class="form-group my-2 py-1">
-          <label for="exampleInputPassword1">Mot de passe</label>
-          <input type="password" class="form-control mt-2" id="exampleInputPassword1" placeholder="Entrez votre mot de passe">
+        <div class="form-group my-2 py-1" id="passwordDiv">
+          <label for="password">Mot de passe</label>
+          <input type="password" class="form-control mt-2 inputToCheck" id="password" name="password" placeholder="Entrez votre mot de passe" value={{$defaultPassword}}>
         </div>
-        <div class="form-group my-2 py-1">
-           <label for="exampleInputPassword1">Confirmer le mot de passe</label>
-           <input type="password" class="form-control mt-2" id="exampleInputPassword1" placeholder="Entrez à nouveau votre mot de passe">
+        <div class="form-group my-2 py-1" id="passwordDiv2">
+           <label for="password2">Confirmer le mot de passe</label>
+           <input type="password" class="form-control mt-2 inputToCheck" id="password2" name="password2" placeholder="Entrez à nouveau votre mot de passe">
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Je m'inscris</button>
+        <button type="submit" id="submitButton" class="btn btn-primary mt-3" disabled>Je m'inscris</button>
     </form>
 
   </div>
 
 
+<script src={{url('js/registrationForm.js')}}></script>
 
 @include('parts.footer')

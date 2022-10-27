@@ -28,9 +28,24 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/liste">Liste</a>
                 </li>
+<<<<<<< HEAD
                 <li class="nav-item">
                     <a class="nav-link disabled" href="/compte">Mon Compte</a>
                 </li>
+=======
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Mon Compte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                       <a class="dropdown-item" href="/inscription">Inscription</a>
+                       <a class="dropdown-item" href="/connexion">Connexion</a>
+                       <a class="dropdown-item" href="#">Déconnexion</a>
+                       <div class="dropdown-divider"></div>
+                       <a class="dropdown-item" href="#">Profil</a>
+                    </div>
+                  </li>
+>>>>>>> userFormValidation
                 </ul>
             </div>
             </nav>

@@ -27,7 +27,7 @@ class schoolListController extends Controller
     }
 
     /**
-     * Gets all school data from the public API.
+     * Récupère les données des écoles depuis l'API.
      *
      * @return Void
      */
@@ -37,7 +37,7 @@ class schoolListController extends Controller
     }
 
     /**
-     * Renders a view of a HTML page to display the data.
+     * Retourne une page HTML en incluant les données
      *
      * @return View
      */

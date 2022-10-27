@@ -16,24 +16,36 @@
 use App\Http\Controllers\schoolListController;
 use App\Models\Utilisateur;
 
+//Accueil
 $router->get('/', function(){
     return view('accueil');
 });
 
+//Liste des écoles
 $router->get('/liste', 'schoolListController@renderView');
 
+//Page inscription
 $router->get('/inscription', function(){
-    return view('inscription');
+    return view('inscription', [
+        'defaultEmail' => '',
+        'defaultPassword' => '',
+    ]);
 });
 
+//Page connexion
 $router->get('/connexion', function(){
     return view('connexion');
 });
 
+<<<<<<< HEAD
 $router->get('/testModel',function(){
     // $utilisateurs = Utilisateur::find($id);
     // var_dump ($utilisateurs);
 });
+=======
+//Validation inscription
+$router->post('/inscription', 'userController@validateRegistration');
+>>>>>>> userFormValidation
 
 
 
