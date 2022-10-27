@@ -6,6 +6,14 @@ let errorPassword = 'Le mot de passe doit contenir au moins: 8 caractères, dont
 let errorPasswordMatch = 'Les mots de passe ne correspondent pas'
 
 
+function isEmptyErrorList(){
+    if (errorList['errorEmail'] == null && errorList['errorPassword'] == null && errorList['errorPasswordMatch'] == null){
+        return true
+    }
+    return false
+}
+
+
 document.querySelectorAll('.inputToCheck').forEach((input) => {
     input.addEventListener('change', () => {
         if (email.value){
@@ -23,9 +31,9 @@ document.querySelectorAll('.inputToCheck').forEach((input) => {
             }
         }
         if (password2.value && password2.value !== password.value){
-            errorList['passwordMatch'] = errorPasswordMatch
+            errorList['errorPasswordMatch'] = errorPasswordMatch
         } else {
-            errorList['passwordMatch'] = null
+            errorList['errorPasswordMatch'] = null
         }
     })
 })
@@ -39,8 +47,6 @@ window.addEventListener('click', (e) => {
     let passwordMessage2= document.getElementById("passwordMessage2")
 
     if (!e.target.classList.contains('inputToCheck')){
-        console.log(mailMessage)
-        console.log(errorList)
 
         if (errorList['errorEmail'] && !mailMessage){
             mailDiv.insertAdjacentHTML('afterend', '<p id="mailMessage" class="text-danger">' + errorList['errorEmail'] + '</p>')
@@ -53,17 +59,19 @@ window.addEventListener('click', (e) => {
             passwordMessage ? passwordMessage.remove() : null
         }
 
-        if (errorList['passwordMatch'] && !passwordMessage2){
-            passwordDiv2.insertAdjacentHTML('afterend', '<p id="passwordMessage2" class="text-danger">' + errorList['passwordMatch'] + '</p>')
+        if (errorList['errorPasswordMatch'] && !passwordMessage2){
+            passwordDiv2.insertAdjacentHTML('afterend', '<p id="passwordMessage2" class="text-danger">' + errorList['errorPasswordMatch'] + '</p>')
         } else if (!errorList['errorPasswordMatch']){
             passwordMessage2 ? passwordMessage2.remove() : null
+            console.log(errorList)
         }
     }
 
-    if (errorList.length == 0 && email.value && password.value && password2.value){
-        submitButton.removeAttribute('disabled', '');
+    if (isEmptyErrorList() && email.value && password.value && password2.value){
+        submitButton.removeAttribute('disabled')
     } else {
-        submitButton.setAttribute('disabled', '');
+        submitButton.setAttribute('disabled', '')
+        console.log(isEmptyErrorList())
     }
 })
 
