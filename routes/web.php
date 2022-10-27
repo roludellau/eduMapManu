@@ -45,3 +45,5 @@ $router->get('/connexion', function(){
 });
 
 $router->post('/connexion',[userController::class,'connexion']);
+
+$router->get('/logout',[userController::class,'logout']);

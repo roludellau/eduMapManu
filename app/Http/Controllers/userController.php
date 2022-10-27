@@ -64,7 +64,7 @@ class userController extends Controller
             $fail=true;
         }
 
-        return view('inscription', [
+        return redirect('/inscription', [
             'defaultEmail' => $email,
             'success' => $success,
             'fail' => $fail
@@ -79,9 +79,14 @@ class userController extends Controller
         if($user = User::whereEmail($email)->first()){
             if(Hash::check($password, $user->password)){
                 auth()->login($user);
-                return view('accueil');
+                return redirect('/');
             }
         }
+    }
+
+    public function logout(){
+        auth()->logout();
+        return redirect('/');
     }
 
 }
