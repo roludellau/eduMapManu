@@ -34,6 +34,7 @@ $router->get('/inscription', function(){
     ]);
 });
 
+
 //Validation inscription
 $router->post('/inscription', 'userController@validateRegistration');
 
