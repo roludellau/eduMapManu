@@ -22,6 +22,7 @@
     </div>
 
     <form class="form" method="POST">
+        @csrf
         <div class="form-group my-2" id="mailDiv">
           <label for="email">Adresse Mail</label>
           <input type="email" class="form-control mt-2 inputToCheck" id="email" name="email" aria-describedby="emailHelp" placeholder="Entrez votre adresse mail" value={{$defaultEmail}}>

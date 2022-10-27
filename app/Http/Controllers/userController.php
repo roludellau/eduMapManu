@@ -56,6 +56,7 @@ class userController extends Controller
                 $user->email = $email;
                 $user->password = app('hash')->make($password);
                 $success = $user->save();
+                auth()->login($user);
             }else{
                 $fail = true;
             }
@@ -78,11 +79,8 @@ class userController extends Controller
 
         if($user = User::whereEmail($email)->first()){
             if(Hash::check($password, $user->password)){
-                var_dump('connexion reussie');
-
-
-
-
+                auth()->login($user);
+                return view('accueil');
             }
         }
     }

@@ -9,6 +9,7 @@
     </div>
 
     <form class="form" method='POST'>
+        @csrf
         <div class="form-group my-2 pb-1">
           <label for="exampleInputEmail1">Adresse Mail</label>
           <input type="email" name="email" class="form-control mt-2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez votre adresse mail">
