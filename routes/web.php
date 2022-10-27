@@ -15,6 +15,7 @@
 
 use App\Http\Controllers\schoolListController;
 use App\Models\Utilisateur;
+use App\Models\User;
 
 //Accueil
 $router->get('/', function(){
@@ -28,7 +29,8 @@ $router->get('/liste', 'schoolListController@renderView');
 $router->get('/inscription', function(){
     return view('inscription', [
         'defaultEmail' => '',
-        'defaultPassword' => '',
+        'success'=>false,
+        'fail'=>false
     ]);
 });
 
@@ -40,7 +42,16 @@ $router->get('/connexion', function(){
 $router->get('/testModel',function(){
     // $utilisateurs = Utilisateur::find($id);
     // var_dump ($utilisateurs);
+
+    // $user = new User;
+    // $user->email = "test@test.fr";
+    // $user->password = "passtest";
+    // $user->save();
+
+    $test = User::whereEmail('test@tesdfsdfdst.fr')->first();
+    var_dump($test);
 });
+
 //Validation inscription
 $router->post('/inscription', 'userController@validateRegistration');
 

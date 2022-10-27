@@ -13,13 +13,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 {
     use Authenticatable, Authorizable, HasFactory;
 
+    protected $table ='users';
+    protected $primaryKey = 'id';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email',
+        'email',
     ];
 
     /**
