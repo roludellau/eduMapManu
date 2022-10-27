@@ -73,7 +73,6 @@ class userController extends Controller
     }
 
     public function connexion(Request $request){
-        var_dump('rentre dans connexion');
         $email = $request->input('email');
         $password = $request->input('password');
 
