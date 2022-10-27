@@ -27,9 +27,12 @@
                 <li class="nav-item active ps-2">
                     <a class="nav-link" href="/">Accueil <span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item ps-1">
-                    <a class="nav-link" href="/liste">Liste</a>
-                </li>
+                @auth
+                    <li class="nav-item ps-1">
+                        <a class="nav-link" href="/liste">Liste</a>
+                    </li>
+                @endauth
+
                 <li class="nav-item dropdown ps-1">
                     <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Mon Compte

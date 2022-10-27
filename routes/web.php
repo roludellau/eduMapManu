@@ -18,12 +18,10 @@ use App\Models\User;
 */
 
 //Accueil
-$router->get('/', function(){
-    return view('accueil');
-});
+$router->get('/', function(){return view('accueil');});
 
 //Liste des écoles
-$router->get('/liste', [schoolListController::class,'renderView']);
+$router->get('/liste', [schoolListController::class,'renderView'])->middleware('auth');
 
 //Page inscription
 $router->get('/inscription', function(){
@@ -32,18 +30,15 @@ $router->get('/inscription', function(){
         'success'=>false,
         'fail'=>false
     ]);
-});
+})->middleware('guest');
 
 
 //Validation inscription
-$router->post('/inscription', [userController::class, 'validateRegistration']);
+$router->post('/inscription', [userController::class, 'validateRegistration'])->middleware('guest');
 
 
 //Page connexion
-$router->get('/connexion', function(){
-    return view('connexion');
-});
+$router->get('/connexion', function(){return view('connexion');})->name('login')->middleware('guest');
+$router->post('/connexion',[userController::class,'connexion'])->middleware('guest');
 
-$router->post('/connexion',[userController::class,'connexion']);
-
-$router->get('/logout',[userController::class,'logout']);
+$router->get('/logout',[userController::class,'logout'])->middleware('auth');
