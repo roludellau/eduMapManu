@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\User;
 
 class userController extends Controller
 {
@@ -34,6 +35,8 @@ class userController extends Controller
     public function validateRegistration():View{
 
         $errorList = [];
+        $success =false;
+        $fail = false;
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
             $errorList['email'] = 'L\'adresse mail entrée n\'est pas valide.';
         }
@@ -44,9 +47,23 @@ class userController extends Controller
             $errorList['passwordMatch'] = 'Les deux mots de passe de correspondent pas.';
         }
 
+        if(empty($errorList)){
+            if(!(User::whereEmail($this->email)->first())){
+                $user = new User();
+                $user->email = $this->email;
+                $user->password = $this->password;
+                $success = $user->save();
+            }else{
+                $fail = true;
+            }
+        }else{
+            $fail=true;
+        }
+
         return view('inscription', [
             'defaultEmail' => $this->email,
-            'defaultPassword' => $this->password,
+            'success' => $success,
+            'fail' => $fail
         ]);
 
     }
