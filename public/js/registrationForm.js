@@ -6,7 +6,8 @@ let errorPassword = 'Le mot de passe doit contenir au moins: 8 caractères, dont
 let errorPasswordMatch = 'Les mots de passe ne correspondent pas'
 
 
-window.addEventListener('keydown', () => {
+document.querySelectorAll('.inputToCheck').forEach((input) => {
+    input.addEventListener('change', () => {
         if (email.value){
             if (!regexEmail.test(email.value)){
                 errorList['errorEmail'] = errorEmail
@@ -26,9 +27,9 @@ window.addEventListener('keydown', () => {
         } else {
             errorList['passwordMatch'] = null
         }
+    })
+})
 
-    }
-)
 
 
 window.addEventListener('click', (e) => {
@@ -44,18 +45,18 @@ window.addEventListener('click', (e) => {
         if (errorList['errorEmail'] && !mailMessage){
             mailDiv.insertAdjacentHTML('afterend', '<p id="mailMessage" class="text-danger">' + errorList['errorEmail'] + '</p>')
         } else if (!errorList['errorEmail']){
-            mailMessage && mailMessage.remove()
+            mailMessage ? mailMessage.remove() : null
         }
         if (errorList['errorPassword'] && !passwordMessage){
             passwordDiv.insertAdjacentHTML('afterend', '<p id="passwordMessage" class="text-danger">' + errorList['errorPassword'] + '</p>')
         } else if (!errorList['errorPassword']){
-            passwordMessage && passwordMessage.remove()
+            passwordMessage ? passwordMessage.remove() : null
         }
 
         if (errorList['passwordMatch'] && !passwordMessage2){
             passwordDiv2.insertAdjacentHTML('afterend', '<p id="passwordMessage2" class="text-danger">' + errorList['passwordMatch'] + '</p>')
         } else if (!errorList['errorPasswordMatch']){
-            passwordMessage2 && passwordMessage2.remove()
+            passwordMessage2 ? passwordMessage2.remove() : null
         }
     }
 

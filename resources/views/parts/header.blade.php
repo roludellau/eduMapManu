@@ -15,20 +15,20 @@
 <body>
     <div class="allButFooter">
         <header>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">Education Versailles</a>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-3">
+            <a class="navbar-brand ms-3 me-4 fs-4" href="#">Education Versailles</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item active ps-2">
                     <a class="nav-link" href="/">Accueil <span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ps-1">
                     <a class="nav-link" href="/liste">Liste</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown ps-1">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Mon Compte
                     </a>
