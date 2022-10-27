@@ -37,15 +37,12 @@ $router->get('/connexion', function(){
     return view('connexion');
 });
 
-<<<<<<< HEAD
 $router->get('/testModel',function(){
     // $utilisateurs = Utilisateur::find($id);
     // var_dump ($utilisateurs);
 });
-=======
 //Validation inscription
 $router->post('/inscription', 'userController@validateRegistration');
->>>>>>> userFormValidation
 
 
 
