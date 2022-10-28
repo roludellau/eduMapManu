@@ -58,8 +58,17 @@ class schoolListController extends Controller
         $this->schoolData = json_decode($response->getBody()->getContents())->records;
         $this->schoolData[0]->record->fields->telephone = trim(chunk_split($this->schoolData[0]->record->fields->telephone, 2, ' '));
 
+        $typesOfSchools = [
+            'Ecole maternelle' => 'ecole_maternelle',
+            'Ecole élémentaire' => 'ecole_elementaire',
+            'Voie générale' => 'voie_generale',
+            'Voie technologique' => 'voie_technologique',
+            'Voie professionnelle' => 'voie_professionnelle',
+        ];
+
         return view('ecole',[
             'school'=> $this->schoolData[0]->record->fields,
+            'typesOfSchools' => $typesOfSchools
         ]);
 
     }

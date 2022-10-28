@@ -9,30 +9,17 @@
 
         <div class="informationsEcole">
 
-            <ul class="listeInformations">
-                @if ($school->ecole_maternelle)
-                    <li class="elementlisteTypesEcoles fw-bold">
-                        {{"Ecole maternelle"}}
-                    </li>
-                @endif
-                @if ($school->ecole_elementaire)
-                    <li class="elementlisteTypesEcoles fw-bold">
-                        {{"Ecole élémentaire"}}
-                    </li>
-                @endif
-                @if ($school->voie_generale)
-                    <li class="elementlisteTypesEcoles fw-bold">
-                        {{"Voie générale"}}
-                    </li>
-                @endif
-                @if ($school->voie_technologique)
-                    <li class="elementlisteTypesEcoles fw-bold">
-                        {{"Voie technologique"}}
-                    </li>
-                @endif
+            <ul class="listeTypesEcoles">
+                @foreach ($typesOfSchools as $typeToDisplay => $typeInData)
+                    @if ($school->$typeInData)
+                        <li class="elementlisteTypesEcoles fw-bold">
+                            {{$typeToDisplay}}
+                        </li>
+                    @endif
+                @endforeach
             </ul>
 
-            <ul class="listeInformations2">
+            <ul class="listeInformations">
                 @if ($school->statut_public_prive)
                     <li class="elementListeCardUnique">
                         <label class="fw-bold">Statut : </label>
