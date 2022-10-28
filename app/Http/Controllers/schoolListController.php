@@ -54,8 +54,15 @@ class schoolListController extends Controller
         ]);
     }
 
-
-    function renderEcole($identifiant){
+/**
+ * RenderEcole
+ * Fetch les données d'une école
+ * Retourne une page HTML en incluant les données
+ *
+ * @param [string] $identifiant // numéro d'identifiant de l'éducation nationale
+ * @return View
+ */
+    function renderEcole($identifiant):View{
 
         $this->apiQueryParams = "?where=identifiant_de_l_etablissement=\"".$identifiant."\"";
         $response = $this->client->request('GET', $this->apiRoute . $this->apiQueryParams);
