@@ -1,15 +1,17 @@
 @include('parts.header')
 
-    <h1 class="titre">Liste des écoles de Versailles</h1>
+    <h1 class="titre mt-4">Liste des écoles de Versailles</h1>
     <div class="containerFlex">
         <div id="map"></div>
     </div>
         <div class="containerFlex">
             @foreach ($schools as $school)
                 <div class="cardEcole">
-                    <p class="nomEtablissement">
-                        {{$school->record->fields->nom_etablissement}}
-                    </p>
+                    <a href="/liste/{{$school->record->fields->identifiant_de_l_etablissement}}" class="anchorSchoolName">
+                        <p class="nomEtablissement text-dark">
+                            {{$school->record->fields->nom_etablissement}}
+                        </p>
+                    </a>
                     <ul>
                         <li class="elementListeCard">
                             <label>Type d'établissement : </label>{{" ".$school->record->fields->type_etablissement}}
@@ -26,7 +28,7 @@
                     </ul>
                 </div>
             @endforeach
-            </div>
+        </div>
 
 
             <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>

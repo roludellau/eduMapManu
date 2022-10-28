@@ -56,9 +56,10 @@ class schoolListController extends Controller
         $this->client = new Client(['base_uri' => $this->apiBaseUrl]);
         $response = $this->client->request('GET', $this->apiRoute . $this->apiQueryParams);
         $this->schoolData = json_decode($response->getBody()->getContents())->records;
+        $this->schoolData[0]->record->fields->telephone = trim(chunk_split($this->schoolData[0]->record->fields->telephone, 2, ' '));
 
         return view('ecole',[
-            'school'=> $this->schoolData,
+            'school'=> $this->schoolData[0]->record->fields,
         ]);
 
     }
