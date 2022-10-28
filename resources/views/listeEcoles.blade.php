@@ -15,7 +15,7 @@
                             <label>Type d'établissement : </label>{{" ".$school->record->fields->type_etablissement}}
                         </li>
                         <li class="elementListeCard">
-                            <label>adresse : </label>{{" ".$school->record->fields->adresse_1." ".$school->record->fields->adresse_2}}
+                            <label>Adresse : </label>{{" ".$school->record->fields->adresse_1." ".$school->record->fields->adresse_2}}
                         </li>
                         <li class="elementListeCard">
                             <label>Contact : </label>{{" ".$school->record->fields->mail}}

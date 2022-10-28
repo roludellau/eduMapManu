@@ -10,7 +10,7 @@
         <div class="informationsEcole">
             <ul class="listeInformations">
                 <li class="elementListeCardUnique">
-                    <label>adresse : </label>{{" ".$school[0]->record->fields->adresse_1." ".$school[0]->record->fields->adresse_2}}
+                    <label>Adresse : </label>{{" ".$school[0]->record->fields->adresse_1." ".$school[0]->record->fields->adresse_2}}
                 </li>
                 <li class="elementListeCardUnique">
                     <label>Contact : </label>{{" ".$school[0]->record->fields->mail}}
