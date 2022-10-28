@@ -42,6 +42,24 @@ class schoolListController extends Controller
      * @return View
      */
     function renderView():View{
-        return view('listeEcoles', ['schools' => $this->schoolData]);
+        $coordonneesVersailles = ['lat'=> '48.801408','long'=>'2.130122'];
+        return view('listeEcoles', [
+            'schools' => $this->schoolData,
+            'lat' => $coordonneesVersailles['lat'],
+            'long' =>$coordonneesVersailles['long']
+    ]);
+    }
+
+    function renderEcole($identifiant){
+
+        $this->apiQueryParams = "?where=identifiant_de_l_etablissement=\"".$identifiant."\"";
+        $this->client = new Client(['base_uri' => $this->apiBaseUrl]);
+        $response = $this->client->request('GET', $this->apiRoute . $this->apiQueryParams);
+        $this->schoolData = json_decode($response->getBody()->getContents())->records;
+
+        return view('ecole',[
+            'school'=> $this->schoolData,
+        ]);
+
     }
 }

@@ -180,6 +180,15 @@ min-height: calc(100vh - 30px);
     margin: 30px 0px 0px 10px;
     font-family: 'Montserrat', sans-serif;
 }
+.cardEcoleUnique{
+    border:solid 1px;
+    border-radius:8px;
+    border-color:rgba(200, 200, 200, 0.712);
+    box-shadow: 2px 2px rgba(209, 209, 209, 0.479);
+    width:60%;
+    margin: 30px 0px 0px 10px;
+    font-family: 'Montserrat', sans-serif;
+}
 
 .nomEtablissement{
     font-size:large;
@@ -195,4 +204,30 @@ min-height: calc(100vh - 30px);
 
 .alert{
     margin-top: 100px;
+}
+
+#map{
+    height:400px;
+    width:80%;
+}
+
+.afficheEcole{
+    margin-top:300px;
+    display:flex;
+}
+
+.nomEtablissementUnique{
+    font-size: 30pt;
+    margin-top:40px;
+    text-align: center;
+}
+
+.elementListeCardUnique{
+    list-style: none;
+    margin-top:20px;
+    margin-left:30px;
+}
+
+.listeInformations{
+    margin-top:60px;
 }

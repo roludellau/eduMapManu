@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\schoolListController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\mapController;
 use App\Models\Utilisateur;
 use App\Models\User;
 /*
@@ -18,10 +19,11 @@ use App\Models\User;
 */
 
 //Accueil
-$router->get('/', function(){return view('accueil');});
+$router->get('/', function(){return view('accueil');})->name('accueil');
 
 //Liste des écoles
-$router->get('/liste', [schoolListController::class,'renderView'])->middleware('auth');
+$router->get('/liste', [schoolListController::class,'renderView'])->name('liste')->middleware('auth');
+$router->get('/liste/{identifiant}', [schoolListController::class,'renderEcole'])->name('ecole')->middleware('auth');
 
 //Page inscription
 $router->get('/inscription', function(){
@@ -42,3 +44,5 @@ $router->get('/connexion', function(){return view('connexion');})->name('login')
 $router->post('/connexion',[userController::class,'connexion'])->middleware('guest');
 
 $router->get('/logout',[userController::class,'logout'])->middleware('auth');
+
+$router->get('/map',[mapController::class,'displayMap'])->name('map')->middleware('auth');

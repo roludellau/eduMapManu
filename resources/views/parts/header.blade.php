@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
 </head>
 
 <body>
@@ -25,11 +26,11 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item active ps-2">
-                    <a class="nav-link" href="/">Accueil <span class="sr-only"></span></a>
+                    <a class="nav-link {{Route::is('accueil') ? 'active' : ''}}" href="/">Accueil <span class="sr-only"></span></a>
                 </li>
                 @auth
                     <li class="nav-item ps-1">
-                        <a class="nav-link" href="/liste">Liste</a>
+                        <a class="nav-link {{Route::is('liste') ? 'active' : ''}}" href="/liste">Liste</a>
                     </li>
                 @endauth
 
