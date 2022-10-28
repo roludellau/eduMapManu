@@ -22,7 +22,7 @@ use App\Models\User;
 $router->get('/', function(){return view('accueil');})->name('accueil');
 
 //Liste des écoles
-$router->get('/liste', [schoolListController::class,'renderView'])->name('liste')->middleware('auth');
+$router->get('/liste', [schoolListController::class,'renderListView'])->name('liste')->middleware('auth');
 $router->get('/liste/{identifiant}', [schoolListController::class,'renderEcole'])->name('ecole')->middleware('auth');
 
 //Page inscription

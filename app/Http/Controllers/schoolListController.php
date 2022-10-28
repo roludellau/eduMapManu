@@ -15,49 +15,59 @@ class schoolListController extends Controller
 
 
     /**
-     * Create a new controller instance.
+     * Crée une nouvelle instance du controlleur.
+     * Définit l'instance du Guzzle Client avec configs
      *
      * @return void
      */
     public function __construct()
     {
-        //$this->apiQueryParams = '?limit=100&where=code_postal=%22' . $this->departmentNumber . '%22%20AND%20type_etablissement%20=%20%22Ecole%22';
         $this->client = new Client(['base_uri' => $this->apiBaseUrl]);
-        $this->fetchSchoolData();
     }
 
-    /**
-     * Récupère les données des écoles depuis l'API.
-     *
-     * @return Void
-     */
-    function fetchSchoolData(){
-        $response = $this->client->request('GET', $this->apiRoute . $this->apiQueryParams);
-        $this->schoolData = json_decode($response->getBody()->getContents())->records;
-    }
 
     /**
+     * Fetch les données pour la liste des écoles
      * Retourne une page HTML en incluant les données
      *
      * @return View
      */
-    function renderView():View{
+    function renderListView():View{
+        $response = $this->client->request('GET', $this->apiRoute . $this->apiQueryParams);
+        $this->schoolData = json_decode($response->getBody()->getContents())->records;
+        // Pour la map
         $coordonneesVersailles = ['lat'=> '48.801408','long'=>'2.130122'];
+
+        // Formatage des numéros de tel
+        foreach ($this->schoolData as $school){
+            $phoneNumber = $school->record->fields->telephone;
+            if (substr($phoneNumber, 2, 1) !== ' '){
+                $school->record->fields->telephone = trim(chunk_split($phoneNumber, 2, ' '));
+            }
+        }
+
+        // Retourne la vue
         return view('listeEcoles', [
             'schools' => $this->schoolData,
             'lat' => $coordonneesVersailles['lat'],
             'long' =>$coordonneesVersailles['long']
-    ]);
+        ]);
     }
+
 
     function renderEcole($identifiant){
 
         $this->apiQueryParams = "?where=identifiant_de_l_etablissement=\"".$identifiant."\"";
-        $this->client = new Client(['base_uri' => $this->apiBaseUrl]);
         $response = $this->client->request('GET', $this->apiRoute . $this->apiQueryParams);
         $this->schoolData = json_decode($response->getBody()->getContents())->records;
-        $this->schoolData[0]->record->fields->telephone = trim(chunk_split($this->schoolData[0]->record->fields->telephone, 2, ' '));
 
+        // Formatage des numéros de tel
+        $phoneNumber = $this->schoolData[0]->record->fields->telephone;
+        if (substr($phoneNumber, 2, 1) !== ' '){
+            $this->schoolData[0]->record->fields->telephone = trim(chunk_split($phoneNumber, 2, ' '));
+        }
+
+        // Dictionnaire avec 'donnée à afficher' => 'donnée dans le Json' pour boucler dans la vue
         $typesOfSchools = [
             'Ecole maternelle' => 'ecole_maternelle',
             'Ecole élémentaire' => 'ecole_elementaire',
